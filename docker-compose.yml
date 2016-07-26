@@ -1,0 +1,116 @@
+version: '2' 
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:1.0.0
+    hostname: namenode
+    container_name: docpyml-namenode
+    domainname: docpyml
+    networks:
+      - docpyml
+    volumes:
+      - ./data/namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+    ports:
+      - "50070:50070"
+      - "8020:8020"
+
+  datanode1:
+    image: bde2020/hadoop-datanode:1.0.0
+    hostname: datanode1
+    container_name: docpyml-datanode1
+    domainname: docpyml
+    networks:
+      - docpyml
+    volumes:
+      - ./data/datanode1:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+
+  datanode2:
+    image: bde2020/hadoop-datanode:1.0.0
+    hostname: datanode2
+    container_name: docpyml-datanode2
+    domainname: docpyml
+    networks: 
+      - docpyml
+    volumes:
+      - ./data/datanode2:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+
+  spark-master:
+    image: earthquakesan/hadoop-spark-master:1.0.0
+    hostname: spark-master
+    container_name: docpyml-spark-master
+    domainname: docpyml
+    networks:
+      - docpyml
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+      - SPARK_CONF_spark_eventLog_enabled=true
+      - SPARK_CONF_spark_eventLog_dir=hdfs://namenode:8020/spark-logs
+      - SPARK_CONF_spark_history_fs_logDirectory=hdfs://namenode:8020/spark-logs
+    env_file:
+      - ./hadoop.env
+    ports:
+        - "8080:8080"
+
+  spark-worker:
+    image: earthquakesan/hadoop-spark-worker:1.0.0
+    hostname: spark-worker
+    domainname: docpyml
+    networks: 
+      - docpyml
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+      - SPARK_CONF_spark_eventLog_enabled=true
+      - SPARK_CONF_spark_eventLog_dir=hdfs://namenode:8020/spark-logs
+      - SPARK_CONF_spark_history_fs_logDirectory=hdfs://namenode:8020/spark-logs
+      - SPARK_MASTER_URL=spark://spark-master:7077
+    env_file:
+      - ./hadoop.env
+
+  spark-notebook:
+    image: earthquakesan/hadoop-spark-notebook:1.0.0
+    hostname: sparknotebook
+    container_name: docpyml-sparknotebook
+    domainname: docpyml
+    networks:
+      - docpyml
+    environment:
+      - SPARK_NOTEBOOK_MASTER=yarn-client
+    env_file:
+      - ./hadoop.env
+    ports:
+      - "9000:9000"
+
+  hue:
+    image: bde2020/hdfs-filebrowser:3.9
+    hostname: hdfsfb
+    container_name: docpyml-hdfsfb
+    domainname: docpyml
+    networks:
+      - docpyml
+    environment:
+      - NAMENODE_HOST=namenode
+    ports:
+      - "8088:8088"
+
+  conda:
+    image: c12e/alpine-jupyter-minimal
+    hostname: py3dataconda
+    container_name: docpyml-conda
+    domainname: docpyml
+    networks:
+      - docpyml
+    ports:
+      - "8888:8888"
+
+networks:
+  docpyml:
+    external: true
