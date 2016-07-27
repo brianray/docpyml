@@ -102,7 +102,7 @@ services:
       - "8088:8088"
 
   conda:
-    image: c12e/alpine-jupyter-minimal
+    build: conda
     hostname: py3dataconda
     container_name: docpyml-conda
     domainname: docpyml

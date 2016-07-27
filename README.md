@@ -18,4 +18,5 @@ To scale up spark-workers:
 
 * [The Spark HDFS Workbench](http://www.big-data-europe.eu/scalable-sparkhdfs-workbench-using-docker/)
 * [c12e jupyter](https://hub.docker.com/r/c12e/alpine-jupyter-minimal/)
-
+* [pysparklines](https://github.com/RedKrieg/pysparklines)
+* [docker-spark](https://github.com/earthquakesan/docker-spark/)
