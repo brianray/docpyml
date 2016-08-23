@@ -12,7 +12,7 @@ List of Containers:
 * docpyml-datanode1: Data Storage HadoopFileSystem
 * docpyml-datanode2: Data Storage HadoopFileSystem
 * docpyml-spark-master: Apache Spark Master
-* spark-worker (<- may launch many): Spark Workers
+* spark-worker (<- may launch many): Spark Workers. Also contain the Python version matching docpyml-conda
 * docpyml-sparknotebook: Preconfigured Spark Notebook
 * docpyml-hdfsfb: HDFS FileBrowser from Cloudera Hue 
 * docpyml-conda: Anaconda Python 3.5 with Jupyter Notebook, machine learning packages, pySpark preconfigured
