@@ -17,7 +17,7 @@ List of Containers:
 * docpyml-hdfsfb: HDFS FileBrowser from Cloudera Hue 
 * docpyml-conda: Anaconda Python 3.5 with Jupyter Notebook, machine learning packages, pySpark preconfigured
 * docpyml-rocker: RStudio
-
+* docpyml-postgres: Postgres
 
 
 ## Install
