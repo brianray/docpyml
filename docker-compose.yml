@@ -90,7 +90,7 @@ services:
       - "9000:9000"
 
   hue:
-    image: bde2020/hdfs-filebrowser:3.9
+    build: docker-hdfs-filebrowser
     hostname: hdfsfb
     container_name: docpyml-hdfsfb
     domainname: docpyml
@@ -110,6 +110,18 @@ services:
       - docpyml
     ports:
       - "8888:8888"
+
+  rocker:
+    image: rocker/rstudio
+    hostname: rocker
+    container_name: docpyml-rocker
+    domainname: docpyml
+    networks:
+      - docpyml
+    env_file:
+      - ./hadoop.env
+    ports:
+      - "8787:8787"   
 
 networks:
   docpyml:
