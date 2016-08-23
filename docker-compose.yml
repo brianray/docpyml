@@ -60,7 +60,7 @@ services:
         - "8080:8080"
 
   spark-worker:
-    image: earthquakesan/hadoop-spark-worker:1.0.0
+    build: spark-worker
     hostname: spark-worker
     domainname: docpyml
     networks: 

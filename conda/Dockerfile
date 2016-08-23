@@ -11,6 +11,19 @@ RUN apt-get update && \
 RUN apt-get -y install curl \
     bzip2 
 
+# Java stuff
+RUN apt-get -y install python-software-properties
+RUN add-apt-repository ppa:webupd8team/java
+RUN apt-get update
+RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+RUN apt-get -y install oracle-java8-installer
+
+# Spark stuff
+RUN curl -s http://d3kbcqa49mib13.cloudfront.net/spark-1.6.1-bin-hadoop2.6.tgz | tar -xz -C /usr/local/
+RUN cd /usr/local && ln -s spark-1.6.1-bin-hadoop2.6 spark
+ENV SPARK_HOME /usr/local/spark
+
+
 # Configure environment
 ENV SHELL=/bin/bash \
   NB_USER=docpyml \
@@ -51,6 +64,7 @@ RUN chown $NB_USER:users /usr/local/bin/start-notebook.sh
 RUN chmod +x /usr/local/bin/start-notebook.sh
 COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
 RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter
+COPY starter_notebooks /home/docpyml/work/
 
 # Configure container startup
 EXPOSE 8888

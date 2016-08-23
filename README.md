@@ -1,5 +1,7 @@
 # Python Machine Learning Package on collection of Docker Containers
 
+By: Brian Ray <brianhray@gmail.com>
+
 To start the enviroment:
 
 ```
