@@ -66,6 +66,9 @@ COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
 RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter
 COPY starter_notebooks /home/docpyml/work/
 
+# extra stuff
+RUN conda install -y psycopg2
+
 # Configure container startup
 EXPOSE 8888
 WORKDIR /home/$NB_USER/work

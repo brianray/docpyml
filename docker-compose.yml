@@ -118,10 +118,23 @@ services:
     domainname: docpyml
     networks:
       - docpyml
-    env_file:
-      - ./hadoop.env
     ports:
       - "8787:8787"   
+
+
+  postgres:
+    build: postgres
+    hostname: postgres
+    container_name: docpyml-postgres
+    domainname: docpyml
+    networks:
+      - docpyml
+    environment:
+      - POSTGRES_USER=docpyml
+    ports:
+      - "5432:5432"   
+
+
 
 networks:
   docpyml:
