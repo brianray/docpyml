@@ -17,6 +17,7 @@ RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
 RUN apt-get -y install oracle-java8-installer
+RUN apt-get -y install unzip 
 
 # Spark stuff
 RUN curl -s http://d3kbcqa49mib13.cloudfront.net/spark-1.6.1-bin-hadoop2.6.tgz | tar -xz -C /usr/local/
@@ -65,6 +66,10 @@ RUN chmod +x /usr/local/bin/start-notebook.sh
 COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
 RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter
 COPY starter_notebooks /home/docpyml/work/
+
+# extra stuff
+RUN conda install -y numpy
+
 
 # Configure container startup
 EXPOSE 8888

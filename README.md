@@ -19,7 +19,6 @@ List of Containers:
 * docpyml-rocker: RStudio
 
 
-
 ## Install
 
 To start the enviroment:
