@@ -137,19 +137,6 @@ services:
       - "8787:8787"   
 
 
-  postgres:
-    build: postgres
-    hostname: postgres
-    container_name: docpyml-postgres
-    domainname: docpyml
-    networks:
-      - docpyml
-    volumes:
-      - ./data/shared:/shared
-    environment:
-      - POSTGRES_USER=docpyml
-    ports:
-      - "5432:5432"   
 
 
 
