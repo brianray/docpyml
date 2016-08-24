@@ -19,6 +19,8 @@ RUN mkdir -p $CONDA_DIR && \
     $CONDA_DIR/bin/conda install --yes conda==${CONDA_VER}
 
 RUN ln -s /opt/conda/bin/python /usr/bin/python
+RUN conda install -y numpy
+
 
 ADD spark-worker-entrypoint.sh /spark-worker-entrypoint.sh
 RUN chmod a+x /spark-worker-entrypoint.sh
