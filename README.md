@@ -21,6 +21,17 @@ List of Containers:
 
 ## Install
 
+Prerequisites. [Docker Toolbox](https://www.docker.com/products/docker-toolbox). 
+
+**optionally** adjust your VM settings:
+
+```
+    docker-machine stop
+    VBoxManage modifyvm default --cpus 4
+    VBoxManage modifyvm default --memory 8192
+    docker-machine start
+```
+
 To start the enviroment:
 
 ```
