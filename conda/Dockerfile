@@ -68,7 +68,6 @@ RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter
 COPY starter_notebooks /home/docpyml/work/
 
 # extra stuff
-RUN conda install -y psycopg2
 RUN conda install -y numpy
 
 
