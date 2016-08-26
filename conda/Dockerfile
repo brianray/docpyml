@@ -70,10 +70,20 @@ COPY starter_notebooks /home/docpyml/work/
 
 # extra stuff
 RUN conda install -y numpy
+RUN mkdir -p /opt/conda/etc/fonts
+RUN chmod -R 777 /opt/conda/etc/fonts
+RUN conda install -y matplotlib
+RUN conda install -y scikit-learn
+
 
 # [ TensorFlow ]
 RUN apt-get -y install build-essential
 RUN conda install -y --channel https://conda.anaconda.org/conda-forge tensorflow
+
+# Theano Family
+RUN conda install -y theano 
+RUN conda install -y --channel https://conda.anaconda.org/ijstokes lasagne
+RUN conda install -y --channel https://conda.anaconda.org/conda-forge keras
 
 
 # Configure container startup
