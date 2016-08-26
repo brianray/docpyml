@@ -1,5 +1,5 @@
 # c12e/alpine-miniconda
-FROM ubuntu:12.04
+FROM ubuntu:14.04
 
 MAINTAINER Brian Ray <brianhray@gmail.com>
 # based on https://github.com/CognitiveScale/alpine-jupyter
@@ -13,6 +13,7 @@ RUN apt-get -y install curl \
 
 # Java stuff
 RUN apt-get -y install python-software-properties
+RUN apt-get -y install software-properties-common
 RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
@@ -69,6 +70,10 @@ COPY starter_notebooks /home/docpyml/work/
 
 # extra stuff
 RUN conda install -y numpy
+
+# [ TensorFlow ]
+RUN apt-get -y install build-essential
+RUN conda install -y --channel https://conda.anaconda.org/conda-forge tensorflow
 
 
 # Configure container startup
