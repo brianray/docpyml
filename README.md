@@ -17,6 +17,7 @@ List of Containers:
 * docpyml-hdfsfb: HDFS FileBrowser from Cloudera Hue 
 * docpyml-conda[1]: Anaconda Python 3.5 with Jupyter Notebook, machine learning packages, pySpark preconfigured
 * docpyml-rocker: RStudio
+* docpyml-zeppelin: Apache Zeppelin analytics workbench
 
 
 [1] on deep-learning branch also installs: Tensorflow, Theano (Lasagne, Keras), and notebook examples
