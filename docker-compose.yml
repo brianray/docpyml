@@ -137,7 +137,17 @@ services:
       - "8787:8787"   
 
 
-
+  zeppelin:
+    image: dylanmei/zeppelin
+    hostname: zeppelin
+    container_name: docpyml-zeppelin
+    domainname: docpyml
+    networks:
+      - docpyml
+    volumes:
+      - ./data/shared:/shared
+    ports:
+      - "8080:8080"
 
 
 networks:
