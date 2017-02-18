@@ -30,6 +30,7 @@ Prerequisites. [Docker Toolbox](https://www.docker.com/products/docker-toolbox).
     VBoxManage modifyvm default --cpus 4
     VBoxManage modifyvm default --memory 8192
     docker-machine start
+    
 ```
 
 To start the enviroment:
@@ -37,6 +38,12 @@ To start the enviroment:
 ```
     docker network create docpyml
     docker-compose up -d
+```
+
+If says docker not running try first:
+
+```
+   eval "$(docker-machine env default)"
 ```
 
 To scale up spark-workers:
