@@ -74,6 +74,17 @@ RUN mkdir -p /opt/conda/etc/fonts
 RUN chmod -R 777 /opt/conda/etc/fonts
 RUN conda install -y matplotlib
 RUN conda install -y scikit-learn
+RUN pip install multiprocessing_logging
+RUN conda install -y nltk
+RUN conda install -y psycopg2
+RUN conda install -y xlrd
+RUN conda install -y anaconda-client
+RUN conda install -y --channel https://conda.anaconda.org/conda-forge defusedxml
+RUN conda install -y lxml
+RUN conda install -y --channel https://conda.anaconda.org/AllesEins prettytable
+RUN conda install -y pandas
+RUN pip install textstat
+
 
 
 # [ TensorFlow ]
