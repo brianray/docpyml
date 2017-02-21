@@ -84,6 +84,7 @@ RUN conda install -y lxml
 RUN conda install -y --channel https://conda.anaconda.org/AllesEins prettytable
 RUN conda install -y pandas
 RUN pip install textstat
+RUN conda install --channel https://conda.anaconda.org/ijstokes pydoop
 
 
 
