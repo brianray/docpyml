@@ -69,6 +69,7 @@ RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter
 COPY starter_notebooks /home/docpyml/work/
 
 # extra stuff
+
 RUN conda install -y numpy
 RUN mkdir -p /opt/conda/etc/fonts
 RUN chmod -R 777 /opt/conda/etc/fonts
@@ -85,7 +86,9 @@ RUN conda install -y --channel https://conda.anaconda.org/AllesEins prettytable
 RUN conda install -y pandas
 RUN pip install textstat
 RUN pip install pywebhdfs
-
+RUN apt-get -y install graphviz
+RUN pip install pydot
+RUN pip install pyLDAvis 
 
 
 # [ TensorFlow ]
