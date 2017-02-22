@@ -89,6 +89,7 @@ RUN pip install pywebhdfs
 RUN apt-get -y install graphviz
 RUN pip install pydot
 RUN pip install pyLDAvis 
+RUN pip install mpldatacursor
 
 
 # [ TensorFlow ]
