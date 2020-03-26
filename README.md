@@ -8,13 +8,6 @@ This project's goal is to use docker containers to set up a network of services 
 
 List of Containers:
 
-* docpyml-namenode: Hadoop NameNode. Keeps the directory tree of all files in the file system.
-* docpyml-datanode1: Data Storage HadoopFileSystem
-* docpyml-datanode2: Data Storage HadoopFileSystem
-* docpyml-spark-master: Apache Spark Master
-* spark-worker (<- may launch many): Spark Workers. Also contain the Python version matching docpyml-conda
-* docpyml-sparknotebook: Preconfigured Spark Notebook
-* docpyml-hdfsfb: HDFS FileBrowser from Cloudera Hue 
 * docpyml-conda[1]: Anaconda Python 3.5 with Jupyter Notebook, machine learning packages, pySpark preconfigured
 * docpyml-rocker: RStudio
 * docpyml-zeppelin: Apache Zeppelin analytics workbench
